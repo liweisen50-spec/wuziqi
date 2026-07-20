@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="五子棋">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>五子棋</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>五子棋</h1>
+            <div id="status">
+                <span id="turn-indicator">
+                    <span class="stone-icon black"></span>
+                    黑棋走
+                </span>
+            </div>
+        </header>
+
+       <main>
+           <div id="board-wrapper">
+               <canvas id="board"></canvas>
+                <div id="color-picker-overlay">
+                    <div class="picker-box">
+                        <p>选择你的棋子</p>
+                        <button class="picker-btn" data-color="black"><span class="stone-icon black large"></span>黑棋（先手）</button>
+                        <button class="picker-btn" data-color="white"><span class="stone-icon white large"></span>白棋（后手）</button>
+                    </div>
+                </div>
+               <div id="winner-overlay" class="hidden">
+                   <div class="winner-box">
+                       <p id="winner-text"></p>
+                        <button id="restart-btn">再来一局</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <button id="restart-btn-small">重新开始</button>
+            <span id="move-count">第 0 手</span>
+        </footer>
+    </div>
+
+    <script src="js/game.js"></script>
+    <script src="js/board.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- PWA Service Worker 注册 -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker 注册成功'))
+                    .catch(err => console.log('Service Worker 注册失败:', err));
+            });
+        }
+    </script>
+</body>
+</html>
