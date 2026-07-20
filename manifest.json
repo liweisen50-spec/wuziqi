@@ -1,7 +1,7 @@
 {
   "name": "五子棋",
   "short_name": "五子棋",
-  "description": "经典五子棋游戏，支持人机对战",
+  "description": "经典五子棋游戏，支持人机对战，19x19棋盘",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#1a1a2e",
